@@ -64,8 +64,7 @@ public:
                  << "\t\t\t\t  |         about          |\n"
                  << "\t\t\t\t  |                        |\n"
                  << "\t\t\t\t  |________________________|\n"
-                 << "\n\n"
-                 << "\t\t\t\t";
+                 << "\n\n";
         }
     }
     void scz(int width, int height)
@@ -173,6 +172,14 @@ public:
     }
     void about()
     {
+        int a;
+        cout << "This is the PRO program in its quarterly version."
+             << endl
+             << "The purpose of the project is educational purpose only and not commercial."
+             << endl
+             << "            Developer: qgm     Date: October 30, 2024"
+             << endl;
+
     }
 };
 
@@ -181,10 +188,11 @@ int main()
     int a;
     Display dio;
     Tasks to;
-    dio.ws(0);
     dio.scz(800, 600);
     dio.dmb();
     dio.dr();
+    while(true){
+    dio.ws(0);
     cin >> a;
     switch (a)
     {
@@ -192,24 +200,31 @@ int main()
         dio.ws(a);
         to.cin_(a);
         to.Operations();
+        cout << "After 5 seconds we return to the main menu" << endl;
+        sleep(5);
         break;
     case 2:
         dio.ws(a);
         to.cin_(a);
         to.Comparisons();
+        cout << "After 5 seconds we return to the main menu" << endl;
+        sleep(5);
         break;
     case 3:
         dio.ws(a);
         to.about();
+        cout << "After 5 seconds we return to the main menu" << endl;
+        sleep(10);
         break;
     case 4:
-        
+        return 0;
         break;
     default:
-        cerr<<"error a < "<<a<<"\a"<<endl;
+        cerr << "error a < " << a << "\a" << endl;
         sleep(0.8);
         system("cls");
         break;
+    }
     }
     getchar();
 }
