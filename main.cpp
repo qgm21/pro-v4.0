@@ -1,8 +1,9 @@
+#include <conio.h>
 #include <iostream>
 #include <unistd.h>
 #include <windows.h>
 #include <cmath>
-#include <fcntl.h>
+
 
 using namespace std;
 
@@ -10,61 +11,91 @@ using namespace std;
 class Display
 {
 public:
+    // دالة خاصة باعطاء شكل النافدة
     void ws(int i)
     {
-        if (i == 0)
+        if (i == 0) 
         {
-            system("cls");
-            cout << "\n\n"
-                 << "\t\t\t\t   ________________________\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |    1  to Operations    |\n"
-                 << "\t\t\t\t  |    2 to Comparisons    |\n"
-                 << "\t\t\t\t  |       3 to about       |\n"
-                 << "\t\t\t\t  |         4 exit         |\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |________________________|\n"
-                 << "\n\n"
-                 << ">>";
+        system("cls");
+        cout << "\n\n"
+             << "\t\t\t\t  "<<char(201);
+        for (int i = 0; i < 24; ++i) { // طباعة 24 مرة
+            cout << char(205);
+        }
+        cout  <<char(187)
+              << "\n"
+              << "\t\t\t\t  "<<char(186)<<"                        "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(186)<<"    1 to Operations     "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(186)<<"    2 to Comparisons    "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(186)<<"       3 to about       "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(186)<<"         4 exit         "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(186)<<"                        "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(200);
+        for (int i = 0; i < 24; ++i) { // طباعة 24 مرة مرة أخرى
+            cout << char(205);
+        }
+        cout << char(188) << "\n\n"
+              << ">>";
         }
         else if (i == 1)
         {
-            system("cls");
-            cout << "\n\n"
-                 << "\t\t\t\t   ________________________\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |       Operations       |\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |________________________|\n"
-                 << "\n\n"
-                 << ">>";
+        system("cls");
+        cout << "\n\n"
+             << "\t\t\t\t  "<<char(201);
+        for (int i = 0; i < 24; ++i) { // طباعة 24 مرة
+            cout << char(205);
+        }
+        cout  <<char(187)
+              << "\n"
+              << "\t\t\t\t  "<<char(186)<<"                        "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(186)<<"       Operations       "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(186)<<"                        "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(200);
+        for (int i = 0; i < 24; ++i) { // طباعة 24 مرة مرة أخرى
+            cout << char(205);
+        }
+        cout << char(188) << "\n\n"
+              << ">>";
         }
         else if (i == 2)
         {
-            system("cls");
-            cout << "\n\n"
-                 << "\t\t\t\t   ________________________\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |       Comparisons      |\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |________________________|\n"
-                 << "\n\n"
-                 << ">>";
+        system("cls");
+        cout << "\n\n"
+             << "\t\t\t\t  "<<char(201);
+        for (int i = 0; i < 24; ++i) { // طباعة 24 مرة
+            cout << char(205);
+        }
+        cout  <<char(187)
+              << "\n"
+              << "\t\t\t\t  "<<char(186)<<"                        "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(186)<<"       Comparisons      "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(186)<<"                        "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(200);
+        for (int i = 0; i < 24; ++i) { // طباعة 24 مرة مرة أخرى
+            cout << char(205);
+        }
+        cout << char(188) << "\n\n"
+              << ">>";
         }
         else if (i == 3)
         {
-            system("cls");
-            cout << "\n\n"
-                 << "\t\t\t\t   ________________________\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |         about          |\n"
-                 << "\t\t\t\t  |                        |\n"
-                 << "\t\t\t\t  |________________________|\n"
-                 << "\n\n";
+        system("cls");
+        cout << "\n\n"
+             << "\t\t\t\t  "<<char(201);
+        for (int i = 0; i < 24; ++i) { // طباعة 24 مرة
+            cout << char(205);
+        }
+        cout  <<char(187)
+              << "\n"
+              << "\t\t\t\t  "<<char(186)<<"                        "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(186)<<"          about         "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(186)<<"                        "<<char(186)<<"\n"
+              << "\t\t\t\t  "<<char(200);
+        for (int i = 0; i < 24; ++i) { // طباعة 24 مرة مرة أخرى
+            cout << char(205);
+        }
+        cout << char(188) << "\n\n"
+              << ">>";
         }
     }
     void scz(int width, int height)
@@ -179,9 +210,10 @@ public:
              << endl
              << "            Developer: qgm     Date: October 30, 2024"
              << endl;
-
     }
 };
+
+
 
 int main()
 {
@@ -191,40 +223,61 @@ int main()
     dio.scz(800, 600);
     dio.dmb();
     dio.dr();
-    while(true){
-    dio.ws(0);
-    cin >> a;
-    switch (a)
+    char key;
+
+    while (true)
     {
-    case 1:
-        dio.ws(a);
-        to.cin_(a);
-        to.Operations();
-        cout << "After 5 seconds we return to the main menu" << endl;
-        sleep(5);
-        break;
-    case 2:
-        dio.ws(a);
-        to.cin_(a);
-        to.Comparisons();
-        cout << "After 5 seconds we return to the main menu" << endl;
-        sleep(5);
-        break;
-    case 3:
-        dio.ws(a);
-        to.about();
-        cout << "After 5 seconds we return to the main menu" << endl;
-        sleep(10);
-        break;
-    case 4:
-        return 0;
-        break;
-    default:
-        cerr << "error a < " << a << "\a" << endl;
-        sleep(0.8);
-        system("cls");
-        break;
-    }
+        dio.ws(0);
+        cin >> a;
+        switch (a)
+        {
+        case 1:
+            dio.ws(a);
+            to.cin_(a);
+            to.Operations();
+            cout << "prass Esc to quit" << endl;
+            key = getch();
+            while (true) { // حلقة انتظار حتى يتم الضغط على Esc
+                char key = getch(); // قراءة المفتاح
+                if (key == 27) {    // تحقق إذا كان المفتاح هو Esc
+                    break;          // الخروج من الحالة
+                }
+            }
+            break;
+        case 2:
+            dio.ws(a);
+            to.cin_(a);
+            to.Comparisons();
+            cout << "prass Esc to quit" << endl;
+            key = getch();
+            while (true) { // حلقة انتظار حتى يتم الضغط على Esc
+                char key = getch(); // قراءة المفتاح
+                if (key == 27) {    // تحقق إذا كان المفتاح هو Esc
+                    break;          // الخروج من الحالة
+                }
+            }
+            break;
+        case 3:
+            dio.ws(a);
+            to.about();
+            cout << "prass Esc to quit" << endl;
+            key = getch();
+            while (true) { // حلقة انتظار حتى يتم الضغط على Esc
+                char key = getch(); // قراءة المفتاح
+                if (key == 27) {    // تحقق إذا كان المفتاح هو Esc
+                    break;          // الخروج من الحالة
+                }
+            }
+            break;
+        case 4:
+            return 0;
+            break;
+        default:
+            cerr << "error a < " << a << "\a" << endl;
+            sleep(0.8);
+            system("cls");
+            break;
+        }
     }
     getchar();
 }
