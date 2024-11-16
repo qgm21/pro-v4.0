@@ -4,6 +4,7 @@
 #include <windows.h>
 #include <cmath>
 #include "UI.cpp"
+#include "CE_fi.cpp"
 
 
 using namespace std;
@@ -19,15 +20,19 @@ public:
         {
             mainUI();
         }
-        else if (i == 1)
+        else if(i==1)
         {
-            OperationsUI();
+            ce_fiUI();
         }
         else if (i == 2)
         {
-            ComparisonsUI();
+            OperationsUI();
         }
         else if (i == 3)
+        {
+            ComparisonsUI();
+        }
+        else if (i == 4)
         {
             aboutUI();
         }
@@ -68,7 +73,7 @@ private:
 public:
     void cin_(int a)
     {
-        if (a == 1)
+        if (a == 2)
         {
             cout << "enter Operations :" << endl;
             cin >> x >> op;
@@ -79,7 +84,7 @@ public:
                 cin >> y;
             }
         }
-        else if (a == 2)
+        else if (a == 3)
         {
             cout << "Enter first number : ";
             cin >> x;
@@ -149,6 +154,9 @@ public:
 
 
 
+
+
+
 int main()
 {
     int a;
@@ -166,6 +174,10 @@ int main()
         switch (a)
         {
         case 1:
+            dio.ws(1);
+            ceat_file();
+            break;
+        case 2:
             dio.ws(a);
             to.cin_(a);
             to.Operations();
@@ -178,7 +190,7 @@ int main()
                 }
             }
             break;
-        case 2:
+        case 3:
             dio.ws(a);
             to.cin_(a);
             to.Comparisons();
@@ -191,10 +203,10 @@ int main()
                 }
             }
             break;
-        case 3:
+        case 4:
             dio.ws(a);
             to.about();
-            cout << "prass Esc to quit" << endl;
+            cout << "\n\n\tprass Esc to quit" << endl;
             key = getch();
             while (true) { // حلقة انتظار حتى يتم الضغط على Esc
                 char key = getch(); // قراءة المفتاح
@@ -203,7 +215,7 @@ int main()
                 }
             }
             break;
-        case 4:
+        case 5:
             return 0;
             break;
         default:
