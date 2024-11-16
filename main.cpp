@@ -174,8 +174,19 @@ int main()
         switch (a)
         {
         case 1:
-            dio.ws(1);
-            ceat_file();
+            cout<<"1 to ceat project , 2 to ceat file"<<endl;
+            int chose;
+            cin>>chose;
+            if(chose == 1)
+            {
+                dio.ws(1);
+                ceat_proj();
+            }
+            else if(chose == 2)
+            {
+                dio.ws(1);
+                ceat_file();
+            }
             break;
         case 2:
             dio.ws(a);
