@@ -1,42 +1,44 @@
-#include <conio.h>
-#include <iostream>
-#include <unistd.h>
-#include <windows.h>
-#include <cmath>
-#include "UI.cpp"
-#include "CE_fi.cpp"
-
+// تضمين المكتبات اللازمة
+#include <conio.h>   // للتعامل مع إدخال/إخراج الكونسول
+#include <iostream>  // للإدخال والإخراج القياسي
+#include <unistd.h>  // لوظائف النظام مثل sleep()
+#include <windows.h> // للتعامل مع واجهة ويندوز
+#include <cmath>     // للدوال الرياضية
+#include "UI.cpp"    // واجهات المستخدم
+#include "CE_fi.cpp" // وظائف إنشاء الملفات والمشاريع
 
 using namespace std;
 
-// كلاس لتحكم بنافدة
+// كلاس للتحكم في إعدادات نافذة الكونسول
 class Display
 {
 public:
-    // دالة خاصة باعطاء شكل النافدة
+    // دالة لتحديد واجهة المستخدم حسب القيمة المدخلة
     void ws(int i)
     {
-        if (i == 0) 
+        if (i == 0)
         {
-            mainUI();
+            mainUI(); // الواجهة الرئيسية
         }
-        else if(i==1)
+        else if (i == 1)
         {
-            ce_fiUI();
+            ce_fiUI(); // واجهة إنشاء الملف/المشروع
         }
         else if (i == 2)
         {
-            OperationsUI();
+            OperationsUI(); // واجهة العمليات الحسابية
         }
         else if (i == 3)
         {
-            ComparisonsUI();
+            ComparisonsUI(); // واجهة المقارنات
         }
         else if (i == 4)
         {
-            aboutUI();
+            aboutUI(); // واجهة حول البرنامج
         }
     }
+
+    // ضبط أبعاد نافذة الكونسول
     void scz(int width, int height)
     {
         HWND console = GetConsoleWindow();
@@ -44,6 +46,8 @@ public:
         GetWindowRect(console, &rect);
         MoveWindow(console, rect.left, rect.top, width, height, TRUE);
     }
+
+    // تعطيل زر التكبير
     void dmb()
     {
         HWND console = GetConsoleWindow();
@@ -51,6 +55,8 @@ public:
         style &= ~WS_MAXIMIZEBOX;
         SetWindowLong(console, GWL_STYLE, style);
     }
+
+    // تعطيل تغيير الحجم
     void dr()
     {
         HWND console = GetConsoleWindow();
@@ -60,23 +66,24 @@ public:
     }
 };
 
-// كلاس الاساسي للمهام خاصة برنامج
+// كلاس رئيسي للوظائف الأساسية للبرنامج
 class Tasks
 {
-
 private:
-    char op;
-    double x;
-    double y;
-    double z;
+    char op;  // عملية حسابية
+    double x; // رقم أول
+    double y; // رقم ثاني
+    double z; // رقم ثالث (غير مستخدم حاليا)
 
 public:
+    // دالة إدخال البيانات حسب نوع العملية
     void cin_(int a)
     {
-        if (a == 2)
+        if (a == 2) // حالة العمليات الحسابية
         {
             cout << "enter Operations :" << endl;
             cin >> x >> op;
+            // إذا كانت العملية من الدوال المثلثية لا تحتاج لرقم ثاني
             if (op == 's' || op == 'S' || op == 'c' || op == 't')
                 ;
             else
@@ -84,7 +91,7 @@ public:
                 cin >> y;
             }
         }
-        else if (a == 3)
+        else if (a == 3) // حالة المقارنات
         {
             cout << "Enter first number : ";
             cin >> x;
@@ -92,6 +99,8 @@ public:
             cin >> y;
         }
     }
+
+    // تنفيذ العمليات الحسابية
     void Operations()
     {
         switch (op)
@@ -129,6 +138,8 @@ public:
             break;
         }
     }
+
+    // مقارنة بين رقمين
     void Comparisons()
     {
         if (x > y || y > x)
@@ -140,6 +151,8 @@ public:
             cout << "Two equal numbers " << x << " = " << y << endl;
         }
     }
+
+    // معلومات عن البرنامج
     void about()
     {
         int a;
@@ -152,84 +165,80 @@ public:
     }
 };
 
-
-
-
-
-
+// الدالة الرئيسية
 int main()
 {
     int a;
-    Display dio;
-    Tasks to;
-    dio.scz(800, 600);
-    dio.dmb();
-    dio.dr();
+    Display dio;       // كائن للتحكم في العرض
+    Tasks to;          // كائن للمهام
+    dio.scz(800, 600); // ضبط أبعاد النافذة
+    dio.dmb();         // تعطيل التكبير
+    dio.dr();          // تعطيل تغيير الحجم
     char key;
 
     while (true)
     {
-        dio.ws(0);
+        dio.ws(0); // عرض الواجهة الرئيسية
         cin >> a;
         switch (a)
         {
-        case 1:
-            cout<<"1 to ceat project , 2 to ceat file"<<endl;
+        case 1: // إنشاء مشروع أو ملف
+            cout << "1 to ceat project , 2 to ceat file" << endl;
             int chose;
-            cin>>chose;
-            if(chose == 1)
+            cin >> chose;
+            if (chose == 1)
             {
                 dio.ws(1);
-                ceat_proj();
+                ceat_proj(); // استدعاء دالة إنشاء المشروع
             }
-            else if(chose == 2)
+            else if (chose == 2)
             {
                 dio.ws(1);
-                ceat_file();
+                ceat_file(); // استدعاء دالة إنشاء الملف
             }
             break;
-        case 2:
+        case 2: // العمليات الحسابية
             dio.ws(a);
             to.cin_(a);
             to.Operations();
             cout << "prass Esc to quit" << endl;
             key = getch();
-            while (true) { // حلقة انتظار حتى يتم الضغط على Esc
-                char key = getch(); // قراءة المفتاح
-                if (key == 27) {    // تحقق إذا كان المفتاح هو Esc
-                    break;          // الخروج من الحالة
-                }
+            while (true)
+            {
+                char key = getch();
+                if (key == 27)
+                    break; // الخروج عند الضغط على Esc
             }
             break;
-        case 3:
+        case 3: // المقارنات
             dio.ws(a);
             to.cin_(a);
             to.Comparisons();
             cout << "prass Esc to quit" << endl;
             key = getch();
-            while (true) { // حلقة انتظار حتى يتم الضغط على Esc
-                char key = getch(); // قراءة المفتاح
-                if (key == 27) {    // تحقق إذا كان المفتاح هو Esc
-                    break;          // الخروج من الحالة
-                }
+            while (true)
+            {
+                char key = getch();
+                if (key == 27)
+                    break;
             }
             break;
-        case 4:
+        case 4: // معلومات البرنامج
             dio.ws(a);
             to.about();
             cout << "\n\n\tprass Esc to quit" << endl;
             key = getch();
-            while (true) { // حلقة انتظار حتى يتم الضغط على Esc
-                char key = getch(); // قراءة المفتاح
-                if (key == 27) {    // تحقق إذا كان المفتاح هو Esc
-                    break;          // الخروج من الحالة
-                }
+            while (true)
+            {
+                char key = getch();
+                if (key == 27)
+                    break;
             }
             break;
-        case 5:
+        case 5: // إنهاء البرنامج
             return 0;
             break;
-        default:
+        default: // حالة الإدخال الخاطئ
             cerr << "error a < " << a << "\a" << endl;
             sleep(0.8);
             system("cls");
